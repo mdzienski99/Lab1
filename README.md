@@ -1,3 +1,37 @@
+# Student Work – Lab 1 Submission
+
+**Author:** Michal Dzienski  
+
+## What I completed in this lab
+
+1. **Connected to Azure Vision API**
+   - Created an Azure Student account.  
+   - Provisioned a Computer Vision resource.  
+   - Retrieved an endpoint and subscription key.  
+   - Configured the application to read credentials from **environment variables** instead of hard-coding them.
+
+2. **Secured Credentials**
+   - Removed hard-coded credentials from `analyze.py`.  
+   - Loaded credentials using:
+     - `AZURE_CV_ENDPOINT`
+     - `AZURE_CV_KEY`  
+   - Updated `.gitignore` to prevent committing local secret files.  
+   - Pushed code to GitHub **without any secrets included**.
+
+3. **Ran and Tested My Own API**
+   - Started the Flask app locally at:  
+     `http://127.0.0.1:3000/`
+   - Successfully invoked my API using curl:
+
+```powershell
+curl.exe -i -X GET `
+  -H "Content-Type: application/json" `
+  --data-binary "@body.json" `
+  "http://127.0.0.1:3000/api/v1/analysis/"
+
+
+
+
 # Lab 1: Calling, Building, and Securing APIs
 In homework I1 you will use third-party machine learning APIs and in the group project you will develop your own APIs. In this lab, you will experiment with both, connecting to the Azure Vision API and providing your own API endpoint. 
 To receive credit for this lab, show your work to the TA during recitation.
