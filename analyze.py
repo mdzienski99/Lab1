@@ -2,9 +2,16 @@ from azure.cognitiveservices.vision.computervision import ComputerVisionClient
 from msrest.authentication import CognitiveServicesCredentials
 from azure.cognitiveservices.vision.computervision.models import OperationStatusCodes
 import time
+import os
 
-endpoint = "ENTER ENDPOINT HERE"
-key = "ENTER KEY HERE"
+endpoint = os.getenv("AZURE_CV_ENDPOINT")
+key = os.getenv("AZURE_CV_KEY")
+
+if not endpoint or not key:
+    raise RuntimeError(
+        "Missing AZURE_CV_ENDPOINT or AZURE_CV_KEY. "
+        "Set them in PowerShell before running the app."
+    )
 
 credentials = CognitiveServicesCredentials(key)
 
@@ -12,6 +19,7 @@ client = ComputerVisionClient(
     endpoint=endpoint,
     credentials=credentials
 )
+
 
 def read_image(uri):
     numberOfCharsInOperationId = 36
